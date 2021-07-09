@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/SeitaHigashi/BlockSiteCollector/issues"
   },
-  "homepage": "https://github.com/SeitaHigashi/BlockSiteCollector#readme"
+  "homepage": "https://github.com/SeitaHigashi/BlockSiteCollector#readme",
+  "dependencies": {
+    "googleapis": "^80.2.0"
+  },
+  "devDependencies": {
+    "@googleapis/docs": "^0.2.0",
+    "@types/node": "^16.0.1",
+    "typescript": "^4.3.5"
+  }
 }
