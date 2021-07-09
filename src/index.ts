@@ -1,4 +1,6 @@
 import * as http from "http";
+import fs from "fs";
+import {error} from "console";
 
 class Main {
   constructor() {
@@ -13,7 +15,12 @@ class Main {
   }
 
   private requestHandler(request: http.IncomingMessage, response: http.ServerResponse): void {
-    response.end("Hello! Node.js with TypeScript!");
+    fs.readFile('web/index.html', 'UTF-8', 
+                (error, data) => {
+                  response.writeHead(200, {'Content-Type': 'text/html'});
+                  response.write(data);
+                  response.end();
+                });
   }
 }
 
