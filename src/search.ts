@@ -1,7 +1,7 @@
 import {google} from "googleapis"
 
-class Search {
-  static async search(keywords:string) {
+export class Search {
+  public static async search(keywords:string) {
     const customSearch = google.customsearch('v1');
     let result = await customSearch.cse.list({
       auth: process.env.GOOGLE_API_KEY,
@@ -13,4 +13,3 @@ class Search {
   }
 }
 
-console.log(Search.search("java sql"));
