@@ -16,17 +16,7 @@ export class Connectivity {
       const practicable = await this.try(result.link!);
       return [result.title, result.link, practicable];
     })
-    //Promise.all(promises).then(results => console.log(results));
     return await Promise.all(promises);
   }
 }
 
-/*
-Search.search("java sql")
-.then(result => Connectivity.tryResults(result.data.items!))
-.then(result => console.log(result));
-
-Search.search("overwatch")
-.then(result => Connectivity.tryResults(result.data.items!))
-.then(result => console.log(result));
-*/

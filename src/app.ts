@@ -4,13 +4,14 @@ import {Connectivity} from "./connectivity"
 
 const app = express();
 
+app.set("view engine", "ejs");
 app.use(express.urlencoded({extended: true}));
 app.post("/",async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   console.log(req.body.words);
   Search.search(req.body.words)
   .then(results => Connectivity.tryResults(results.data.items!))
-  .then(results => res.end(results.toString()));
+  .then(results => res.render('result',{results: results}));
 });
 
 app.get("/", (_, res) => {
@@ -25,3 +26,4 @@ app.get("/:file", (req, res) => {
 });
 
 app.listen(8000);
+
