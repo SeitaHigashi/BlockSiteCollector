@@ -1,5 +1,4 @@
 import {customsearch_v1} from "googleapis"
-import { Search } from "./search"
 global.fetch = require('node-fetch').default;
 
 export class Connectivity {
@@ -12,19 +11,22 @@ export class Connectivity {
     }
   }
 
-  public static tryResults(results:customsearch_v1.Schema$Result[]){
-    const promises = results.map(result => {
-      return this.try(result.link!);
+  public static async tryResults(results:customsearch_v1.Schema$Result[]){
+    const promises = results.map(async (result) => {
+      const practicable = await this.try(result.link!);
+      return [result.title, result.link, practicable];
     })
-    Promise.all(promises).then(results => console.log(results));
-
+    //Promise.all(promises).then(results => console.log(results));
+    return await Promise.all(promises);
   }
 }
 
+/*
 Search.search("java sql")
 .then(result => Connectivity.tryResults(result.data.items!))
 .then(result => console.log(result));
 
-Search.search("battle.net")
+Search.search("overwatch")
 .then(result => Connectivity.tryResults(result.data.items!))
 .then(result => console.log(result));
+*/
