@@ -7,7 +7,7 @@ export class Search {
       auth: process.env.GOOGLE_API_KEY,
       cx: process.env.GOOGLE_CSE_ID,
       q: keywords,
-      lr: 'lang_ja'
+      lr: 'lang_ja',
     });
     return result;
   }
