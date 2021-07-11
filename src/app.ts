@@ -1,12 +1,25 @@
 import express from "express"
 import {Search} from "./search"
 import {Connectivity} from "./connectivity"
+import session from "express-session"
+
+declare module "express-session" {
+  interface Session {
+  }
+}
 
 const app = express();
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 }
+}));
 app.use(express.urlencoded({extended: true}));
-app.post("/",async (req, res) => {
+
+app.post("/search",async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   console.log(req.body.words);
   Search.search(req.body.words)
@@ -14,7 +27,7 @@ app.post("/",async (req, res) => {
   .then(results => res.render('result',{results: results}));
 });
 
-app.get("/", (_, res) => {
+app.get("/", (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   res.sendFile('index.html', {root: 'web'});
 });
