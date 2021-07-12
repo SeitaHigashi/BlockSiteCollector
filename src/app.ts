@@ -37,7 +37,8 @@ app.post("/entry", async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8');
   const store = Store.getStore();
   store.set(req.session.data);
-  res.end('<a href="/">トップへ戻る</a>');
+  const count = req.session.data.filter(value => value.practicable == false).length;
+  res.render('thanks',{count: count});
 });
 
 app.get("/", (_req, res) => {
