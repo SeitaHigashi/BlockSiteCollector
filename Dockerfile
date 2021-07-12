@@ -8,8 +8,8 @@ COPY ./package-lock.json /workdir/package-lock.json
 RUN npm ci
 
 # compile typescript
-COPY ./src /workdir/src
 COPY ./tsconfig.json /workdir/tsconfig.json
+COPY ./src /workdir/src
 RUN npx tsc
 
 COPY ./web /workdir/web
