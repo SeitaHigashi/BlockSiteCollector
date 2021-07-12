@@ -31,6 +31,10 @@ export class Store {
     return this.setList.length;
   }
 
+  public clear() : void {
+    this.setList = new Array<StoreSet>();
+  }
+
   private toOnlyFalse(storeSet: StoreSet[]) : StoreSet[] {
     return storeSet.filter(value => value.practicable == false);
   }
