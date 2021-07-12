@@ -3,6 +3,7 @@ import {Search} from "./search"
 import {Connectivity} from "./connectivity"
 import {Store} from "./store"
 import {StoreSet} from "./storeSet"
+import {Output} from "./output"
 import session from "express-session"
 
 declare module "express-session" {
@@ -48,6 +49,11 @@ app.get("/list", (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   const sets = Store.getStore().getAll();
   res.render('list',{sets: sets});
+});
+
+app.get("/blocksite.xlsx", (req, res) => {
+  res.header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+  res.send(Output.out())
 });
 
 app.get("/:file", (req, res) => {
