@@ -15,9 +15,6 @@ export class Output{
   }
 
   private static convertToArray(storeSets: StoreSet[]) : string[][] {
-    console.log(storeSets);
-    const ret = storeSets.map(value => [value.title, value.url]);
-    console.log(ret);
-    return ret;
+    return storeSets.map(value => [value.title, value.url]);
   }
 }
