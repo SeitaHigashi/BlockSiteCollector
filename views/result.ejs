@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-<table>
-  <tbody>
-    <% for (let result of results) { %>
-    <tr>
-      <td><%- result.title %></td>
-      <td><%- result.url %></td>
-      <td><%- result.practicable %></td>
-    </tr>
-    <% } %> 
-  </tbody>
-</table>
-<form action="entry" method="POST">
-  <button>登録</button>
-</form>
+  <body>
+    <table>
+      <tbody>
+        <% for (let result of results) { %>
+        <tr>
+          <td><%- result.title %></td>
+          <td><%- result.url %></td>
+          <td><%- result.practicable %></td>
+        </tr>
+        <% } %> 
+      </tbody>
+    </table>
+    <form action="entry" method="POST">
+      <button>登録</button>
+    </form>
+  </body>
 </html>
