@@ -47,13 +47,13 @@ app.get("/", (_req, res) => {
   res.sendFile('index.html', {root: 'web'});
 });
 
-app.get("/list", (req, res) => {
+app.get("/list", (_req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   const sets = Store.getStore().getAll();
   res.render('list',{sets: sets});
 });
 
-app.get("/blocksite.xlsx", (req, res) => {
+app.get("/blocksite.xlsx", (_req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=blocksite.xlsx');
   res.header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
   const data = Store.getStore().getAll();
