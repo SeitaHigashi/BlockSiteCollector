@@ -27,6 +27,10 @@ export class Store {
     return this.setList;
   }
 
+  public count() : number {
+    return this.setList.length;
+  }
+
   private toOnlyFalse(storeSet: StoreSet[]) : StoreSet[] {
     return storeSet.filter(value => value.practicable == false);
   }

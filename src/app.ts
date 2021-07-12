@@ -36,9 +36,10 @@ app.post("/search",async (req, res) => {
 app.post("/entry", async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8');
   const store = Store.getStore();
+  const before = store.count();
   store.set(req.session.data);
-  const count = req.session.data.filter(value => value.practicable == false).length;
-  res.render('thanks',{count: count});
+  const after = store.count();
+  res.render('thanks',{count: after - before});
 });
 
 app.get("/", (_req, res) => {
