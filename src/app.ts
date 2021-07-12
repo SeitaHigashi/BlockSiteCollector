@@ -37,7 +37,7 @@ app.post("/entry", async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8');
   const store = Store.getStore();
   store.set(req.session.data);
-  res.end('<a href="/">home</a>');
+  res.end('<a href="/">トップへ戻る</a>');
 });
 
 app.get("/", (_req, res) => {
@@ -54,7 +54,8 @@ app.get("/list", (req, res) => {
 app.get("/blocksite.xlsx", (req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=blocksite.xlsx');
   res.header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-  res.send(Buffer.from(Output.out()))
+  const data = Store.getStore().getAll();
+  res.send(Buffer.from(Output.makeBook(data)));
 });
 
 app.get("/:file", (req, res) => {
