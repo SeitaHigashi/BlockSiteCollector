@@ -42,6 +42,12 @@ app.post("/entry", async (req, res) => {
   res.render('thanks',{count: after - before});
 });
 
+app.post("/clear", (_req, res) => {
+  Store.getStore().clear();
+  res.header('Content-Type', 'text/html;charset=utf-8');
+  res.end('一覧を消去しました<br><a href="/list">一覧に戻る</a>');
+});
+
 app.get("/", (_req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   res.sendFile('index.html', {root: 'web'});
