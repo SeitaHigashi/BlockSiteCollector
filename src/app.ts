@@ -37,7 +37,7 @@ app.post("/entry", async (req, res) => {
   res.end("OK")
 });
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   res.sendFile('index.html', {root: 'web'});
 });
