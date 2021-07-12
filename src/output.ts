@@ -11,7 +11,7 @@ export class Output{
     };
     wb.SheetNames.push("Test Sheet");
     wb.Sheets["Test Sheet"] = XLSX.utils.aoa_to_sheet([["hello", "world"]]);
-    const wopts : XLSX.WritingOptions = { bookType:'xlsx', type:'binary' };
+    const wopts : XLSX.WritingOptions = { bookType:'xlsx', type:'buffer' };
     return XLSX.write(wb, wopts);
   }
 }

@@ -52,8 +52,9 @@ app.get("/list", (req, res) => {
 });
 
 app.get("/blocksite.xlsx", (req, res) => {
+  res.setHeader('Content-disposition', 'attachment; filename=blocksite.xlsx');
   res.header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-  res.send(Output.out())
+  res.send(Buffer.from(Output.out()))
 });
 
 app.get("/:file", (req, res) => {
