@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
+  <head>
+        <script>
+          function check() {
+            if(window.confirm('削除してもよろしいですか(この操作は取り消せません)')) {
+             return true;
+            } else {
+              return false;
+            }
+          }
+        </script>
+  </head>
   <body>
     <a href="/">トップへ戻る</a><br>
     <a href="/blocksite.xlsx">一覧をダウンロード(xlsx)</a><br>
-    <form action="/clear" method="POST">
+    <form action="/clear" method="POST" onsubmit="return check()">
       一覧を削除:<button>削除</button>
     </form>
     <table>
