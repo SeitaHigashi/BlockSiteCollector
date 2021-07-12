@@ -35,13 +35,19 @@ app.post("/search",async (req, res) => {
 app.post("/entry", async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8');
   const store = Store.getStore();
-  store.sets(req.session.data)
-  res.end("OK")
+  store.set(req.session.data);
+  res.end('<a href="/">home</a>');
 });
 
 app.get("/", (_req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8')
   res.sendFile('index.html', {root: 'web'});
+});
+
+app.get("/list", (req, res) => {
+  res.header('Content-Type', 'text/html;charset=utf-8')
+  const sets = Store.getStore().getAll();
+  res.render('list',{sets: sets});
 });
 
 app.get("/:file", (req, res) => {

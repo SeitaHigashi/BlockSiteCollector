@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <table>
+      <tbody>
+        <% for (let set of sets) { %>
+        <tr>
+          <td><%- set.title %></td>
+          <td><%- set.url %></td>
+          <td><%- set.practicable %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
