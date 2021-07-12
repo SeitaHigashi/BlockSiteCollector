@@ -1,4 +1,3 @@
-import url from "url"
 import {StoreSet} from "./storeSet"
 
 export class Store {
@@ -16,9 +15,20 @@ export class Store {
     return this.store;
   }
 
-  public sets(storeSet: StoreSet[]) : void {
-    const fqdn = this.toFQDN(storeSet);
-    console.log(fqdn)
+  public set(storeSet: StoreSet[]) : void {
+    const fqdn = this.toFQDN(this.toOnlyFalse(storeSet));
+    fqdn.map(value => {
+      if (this.setList.find(set => set.url == value.url) == undefined)
+        this.setList.push(value);
+    });
+  }
+
+  public getAll() : StoreSet[] {
+    return this.setList;
+  }
+
+  private toOnlyFalse(storeSet: StoreSet[]) : StoreSet[] {
+    return storeSet.filter(value => value.practicable == false);
   }
 
   private toFQDN(storeSet: StoreSet[]) : StoreSet[] {
