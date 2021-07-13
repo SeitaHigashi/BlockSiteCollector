@@ -24,6 +24,7 @@
     "express-session": "^1.17.2",
     "googleapis": "^80.2.0",
     "node-fetch": "^2.6.1",
+    "proxy-agent": "^4.0.1",
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
