@@ -9,7 +9,7 @@ export class Search {
       q: keywords,
       lr: 'lang_ja',
     });
-    return result;
+    return result.data.items;
   }
 }
 

@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended: true}));
 app.post("/search",async (req, res) => {
   res.header('Content-Type', 'text/html;charset=utf-8');
   Search.search(req.body.words)
-  .then(results => Connectivity.tryResults(results.data.items!))
+  .then(results => Connectivity.tryResults(results!))
   .then(results => {
     req.session.data = results;
     res.render('result',{results: results});
