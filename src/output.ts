@@ -15,6 +15,6 @@ export class Output{
   }
 
   private static convertToArray(storeSets: StoreSet[]) : string[][] {
-    return storeSets.map(value => [value.title, value.url]);
+    return storeSets.map(value => [value.title, value.url, value.contents]);
   }
 }

@@ -45,6 +45,7 @@ export class Store {
       const set : StoreSet = {
         title: value.title,
         url: url.host,
+        contents: value.contents,
         practicable: value.practicable
       } 
       return set;

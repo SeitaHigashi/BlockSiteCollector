@@ -15,10 +15,15 @@ export class Connectivity {
     }
   }
 
-  public static async tryResults(results:customsearch_v1.Schema$Result[]){
+  public static async tryResults(contents:string, results:customsearch_v1.Schema$Result[]){
     const promises = results.map(async (result) => {
       const practicable = await this.try(result.link!);
-      const set : StoreSet = {title: result.title!, url: result.link!, practicable: practicable}; 
+      const set : StoreSet = {
+        title: result.title!,
+        url: result.link!,
+        contents: contents,
+        practicable: practicable
+      }; 
       return set;
     })
     return await Promise.all(promises);
