@@ -19,12 +19,16 @@
     </form>
     <table>
       <tbody>
+        <tr>
+          <td>タイトル</td>
+          <td>URL</td>
+          <td>申請理由(検索ワード)</td>
+        </tr>
         <% for (let set of sets) { %>
         <tr>
           <td><%- set.title %></td>
           <td><%- set.url %></td>
           <td><%- set.contents %></td>
-          <td><%- set.practicable %></td>
         </tr>
         <% } %>
       </tbody>
